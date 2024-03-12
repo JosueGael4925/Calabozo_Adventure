@@ -84,7 +84,7 @@ def seleccionar_personaje():
     print("Selecciona tu personaje:")
     print("1. Mago")
     print("2. Héroe")
-    print("3. Experto en Trampas")
+    
 
     opcion = input("Elige un personaje (1-3): ")
     
@@ -92,8 +92,7 @@ def seleccionar_personaje():
         return Personaje("Mago", 100)
     elif opcion == "2":
         return Personaje("Héroe", 100)
-    elif opcion == "3":
-        return Personaje("Experto en Trampas", 100)
+    
     else:
         print("Opción no válida. Intenta de nuevo.")
         return seleccionar_personaje()
