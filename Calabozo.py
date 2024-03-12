@@ -103,12 +103,12 @@ def enfrentar_monstruo(personaje):
     monstruo_actual = random.choice(monstruos)
 
     print(f"Te has topado con un {monstruo_actual}. ¿Qué harás, {personaje.nombre}?")
-    print("1. Pelear_con monstruo")
-    print("2. Evadir_no genera daño")
+    print("1. Pelea_con monstruo")
+    print("2. Evade_no genera daño")
     print("3. Usar poción_ aumento de vida")
-    print("4. Usar escudo_ evita daño fuerte")
+    print("4. Protegerte con escudo_ evita daño fuerte")
     print("5. Usar bendición de dios_ ataque letal")
-    print("6. Comer algo_ botiquin de vida")
+    print("6. Comer frutas benditas_ botiquin de vida")
     print("7. Usar encantamiento_ daño magico")
     print("8. Usar hierbas medicinales_ botiquin 2")
 
