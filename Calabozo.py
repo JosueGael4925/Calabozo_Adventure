@@ -170,7 +170,7 @@ def main():
         personaje.recibir_dano(dano_recibido)
 
         if personaje.salud <= 0:
-            print(f"Tu salud ha llegado a 0. ¡El juego ha terminado! Estoy cansado jefe... cansado de tanto viajar...")
+            print(f"Tu salud ha llegado a 0. ¡El juego ha terminado!")
         else:
             print(f"Tu salud actual es {personaje.salud}.\n")
 
