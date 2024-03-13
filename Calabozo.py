@@ -84,36 +84,39 @@ def seleccionar_personaje():
     print("Selecciona tu personaje:")
     print("1. Mago")
     print("2. Héroe")
-    
+    print("3. Experto en Trampas")
 
     opcion = input("Elige un personaje (1-3): ")
+    P1,P2,P3 = "Mago", "Héroe", "Experto en trampas"#Empaquetamiento de variables.
     
     if opcion == "1":
-        return Personaje("Mago", 100)
+        return Personaje(P1, 100)
     elif opcion == "2":
-        return Personaje("Héroe", 100)
-    
+        return Personaje(P2, 100)
+    elif opcion == "3":
+        return Personaje(P3, 100)
     else:
         print("Opción no válida. Intenta de nuevo.")
         return seleccionar_personaje()
 
-def enfrentar_monstruo(personaje):
-    monstruos = ["slime", "esqueleto", "araña", "fantasma"]
-    monstruo_actual = random.choice(monstruos)
+def __enfrentar_monstruo(personaje):#Método privado
+    __monstruos = ["slime", "esqueleto", "araña", "fantasma"]
+    monstruo_actual = random.choice(__monstruos)#Atributo privado
 
     print(f"Te has topado con un {monstruo_actual}. ¿Qué harás, {personaje.nombre}?")
-    print("1. Pelear_con monstruo")
-    print("2. Evadir_no genera daño")
-    print("3. Usar poción_ aumento de vida")
-    print("4. Usar escudo_ evita daño fuerte")
-    print("5. Usar bendición de dios_ ataque letal")
-    print("6. Comer algo_ botiquin de vida")
-    print("7. Usar encantamiento_ daño magico")
-    print("8. Usar hierbas medicinales_ botiquin 2")
+    print("1. Pelear")
+    print("2. Evadir")
+    print("3. Usar poción")
+    print("4. Usar escudo")
+    print("5. Usar bendición de dios")
+    print("6. Comer algo")
+    print("7. Usar encantamiento")
+    print("8. Usar hierbas medicinales")
 
     opcion = input("Elige una opción (1-8): ")
-
-    if opcion == "1":
+    opciones=("1", "2", "3", "4", "5", "6", "7", "8")#Asiganción múltiple y desempaquetamiento.
+    O1,O2,O3,O4,O5,O6,O7,O8 = opciones
+    if opcion == O1:
         # Elige pelear
         dano_recibido = personaje.atacar_monstruo()
         print(f"Atacaste al {monstruo_actual}. Le hiciste {dano_recibido} de daño.")
@@ -122,7 +125,7 @@ def enfrentar_monstruo(personaje):
             if usar_pocion.lower() == "s":
                 personaje.usar_pocion()
         return dano_recibido
-    elif opcion == "2":
+    elif opcion == O2:
         # Elige evadir
         print(f"Lograste evadir al {monstruo_actual}. ¡Buena elección!")
         personaje.intentos_huir += 1
@@ -131,39 +134,39 @@ def enfrentar_monstruo(personaje):
             print("Has intentado evadir tres veces consecutivas. ¡Debes combatir con las bestias ahora!")
             personaje.intentos_huir = 0  # Reinicia el contador de intentos de huir
         return 0
-    elif opcion == "3":
+    elif opcion == O3:
         # Elige usar poción
         personaje.usar_pocion()
         return 0
-    elif opcion == "4":
+    elif opcion == O4:
         # Elige usar escudo
         personaje.usar_escudo()
         return 0
-    elif opcion == "5":
+    elif opcion == O5:
         # Elige usar bendición de dios
         personaje.usar_bendicion()
         return 0
-    elif opcion == "6":
+    elif opcion == O6:
         # Elige comer algo
         personaje.usar_comida()
         return 0
-    elif opcion == "7":
+    elif opcion == O7:
         # Elige usar encantamiento
         personaje.usar_encantamiento()
         return 0
-    elif opcion == "8":
+    elif opcion == O8:
         # Elige usar hierbas medicinales
         personaje.usar_hierbas_medicinales()
         return 0
     else:
         print("Opción no válida. Intenta de nuevo.")
-        return enfrentar_monstruo(personaje)
+        return __enfrentar_monstruo(personaje)
 
 def main():
     personaje = seleccionar_personaje()
 
     while personaje.salud > 0:
-        dano_recibido = enfrentar_monstruo(personaje)
+        dano_recibido = __enfrentar_monstruo(personaje)
         personaje.recibir_dano(dano_recibido)
 
         if personaje.salud <= 0:
